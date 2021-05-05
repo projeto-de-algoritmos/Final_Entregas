@@ -1,12 +1,17 @@
 import React from 'react'
 
-import Home from './pages/Home'
+import Routes from './routes'
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 import './index.css'
-import './assets/css/fonts.css'
+
+global.jQuery = require('jquery')
+require('bootstrap/dist/js/bootstrap')
+window.$ = require('jquery')
 
 function App() {
-  return <Home />
+  return <Routes />
 }
 
 export default App
