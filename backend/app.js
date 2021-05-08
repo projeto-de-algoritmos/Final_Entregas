@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const fs = require('fs')
 const database = require('./database/items.json')
-const { getUtcDateTime } = require('./src/utils')
+const { getUtcDateTime, sort } = require('./src/utils')
 
 const app = express()
 
@@ -12,7 +12,17 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 
 const getItems = (request, response) => {
-    response.status(200).json({})
+    const { filterBy, order, porPagina = 10, pagina = 1 } = request.query
+    if (filterBy) {
+        if (!['identificador', 'cidade', 'empresa'].find(filter => filter === filterBy))
+            return response.status(400).json({ message: "Parâmetro filterBy inválido, deve ser um desses valores: ['identificador', 'cidade', 'empresa']" })
+        if (order && !['crescente', 'decrescente'].find(ord => ord === order))
+            return response.status(400).json({ message: "Parâmetro order inválido, deve ser um desses valores: ['crescente', 'decrescente']" })
+
+        const itemsOrdenados = sort(database, request.query.filterBy, request.query.order)
+        return response.status(200).json(itemsOrdenados.slice((pagina - 1) * porPagina, pagina * porPagina))
+    }
+    response.status(200).json(database.slice((pagina - 1) * porPagina, pagina * porPagina))
 }
 
 const addItem = (request, response) => {
