@@ -34,7 +34,6 @@ const mergeSort = (array, filter, order) => {
 }
 
 const sort = (items, filter, order = 'crescente') => {
-    console.log(order)
     const itemsOrdenados = mergeSort(items, filter, order)
     return itemsOrdenados
 }
