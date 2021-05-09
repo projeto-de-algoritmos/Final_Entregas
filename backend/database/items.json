@@ -1,1 +1,51 @@
-[{"identificador":1234,"descricao":"TV 1000 Polegadas","empresa":"LG","cidade":"São Paulo","dataEntrega":"05/06/2021"},{"identificador":2,"descricao":"TV 1000 Polegadas","empresa":"LG","cidade":"São Paulo","dataEntrega":"08/05/2021"},{"identificador":1,"descricao":"TV 1000 Polegadas","empresa":"LG","cidade":"São Paulo","dataEntrega":"08/05/2021"},{"identificador":3,"descricao":"TV 1000 Polegadas","empresa":"LG","cidade":"São Paulo","dataEntrega":"08/05/2021"},{"identificador":4,"descricao":"TV 1000 Polegadas2","empresa":"LG","cidade":"São Paulo","dataEntrega":"08/05/2021"},{"identificador":5,"descricao":"TV 1000 Polegadas2","empresa":"LG","cidade":"Brasília","dataEntrega":"08/05/2021"},{"identificador":6,"descricao":"TV 1000 Polegadas2","empresa":"LG2","cidade":"Brasília","dataEntrega":"08/05/2021"}]
+[
+    {
+        "identificador": 1234,
+        "descricao": "TV 1000 Polegadas",
+        "empresa": "LG",
+        "cidade": "São Paulo",
+        "dataEntrega": "2021-06-05T03:00:00.000Z"
+    },
+    {
+        "identificador": 2,
+        "descricao": "TV 1000 Polegadas",
+        "empresa": "LG",
+        "cidade": "São Paulo",
+        "dataEntrega": "2021-05-08T03:00:00.000Z"
+    },
+    {
+        "identificador": 1,
+        "descricao": "TV 1000 Polegadas",
+        "empresa": "LG",
+        "cidade": "São Paulo",
+        "dataEntrega": "2021-05-09T03:00:00.000Z"
+    },
+    {
+        "identificador": 3,
+        "descricao": "TV 1000 Polegadas",
+        "empresa": "LG",
+        "cidade": "São Paulo",
+        "dataEntrega": "2021-05-10T03:00:00.000Z"
+    },
+    {
+        "identificador": 4,
+        "descricao": "TV 1000 Polegadas2",
+        "empresa": "LG",
+        "cidade": "São Paulo",
+        "dataEntrega": "2021-05-11T03:00:00.000Z"
+    },
+    {
+        "identificador": 5,
+        "descricao": "TV 1000 Polegadas2",
+        "empresa": "LG",
+        "cidade": "Brasília",
+        "dataEntrega": "2021-05-12T03:00:00.000Z"
+    },
+    {
+        "identificador": 6,
+        "descricao": "TV 1000 Polegadas2",
+        "empresa": "LG2",
+        "cidade": "Brasília",
+        "dataEntrega": "2021-05-13T03:00:00.000Z"
+    }
+]

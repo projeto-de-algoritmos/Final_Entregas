@@ -5,6 +5,12 @@ const getUtcDateTime = (offset = '0') => {
     return nd
 }
 
+const toDate = (dateStr) => {
+    if (typeof dateStr !== 'string') return dateStr
+    const parts = dateStr.split("/");
+    return new Date(parts[2], parts[1] - 1, parts[0]);
+}
+
 const _mergeArrays = (a, b, filter, order) => {
     const c = []
 
@@ -13,12 +19,8 @@ const _mergeArrays = (a, b, filter, order) => {
         else c.push(a[0][filter] < b[0][filter] ? b.shift() : a.shift())
     }
 
-    while (a.length) {
-        c.push(a.shift())
-    }
-    while (b.length) {
-        c.push(b.shift())
-    }
+    while (a.length) c.push(a.shift())
+    while (b.length) c.push(b.shift())
 
     return c
 }
@@ -38,4 +40,4 @@ const sort = (items, filter, order = 'crescente') => {
     return itemsOrdenados
 }
 
-module.exports = { getUtcDateTime, sort }
+module.exports = { getUtcDateTime, sort, toDate }

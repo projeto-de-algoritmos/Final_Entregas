@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const fs = require('fs')
 const database = require('./database/items.json')
-const { getUtcDateTime, sort } = require('./src/utils')
+const { getUtcDateTime, sort, toDate } = require('./src/utils')
 
 const app = express()
 
@@ -14,7 +14,7 @@ app.use(cors())
 const getItems = (request, response) => {
     const { filterBy, order, porPagina = 10, pagina = 1 } = request.query
     if (filterBy) {
-        if (!['identificador', 'cidade', 'empresa'].find(filter => filter === filterBy))
+        if (!['identificador', 'cidade', 'empresa', 'dataEntrega'].find(filter => filter === filterBy))
             return response.status(400).json({ message: "Parâmetro filterBy inválido, deve ser um desses valores: ['identificador', 'cidade', 'empresa']" })
         if (order && !['crescente', 'decrescente'].find(ord => ord === order))
             return response.status(400).json({ message: "Parâmetro order inválido, deve ser um desses valores: ['crescente', 'decrescente']" })
@@ -42,6 +42,7 @@ const addItem = (request, response) => {
     const itemExistente = database.find(item => item.identificador === identificador)
     if (itemExistente) return response.status(400).json({ message: "Produto com este identificador já está cadastrado" })
 
+    novoItem['dataEntrega'] = toDate(novoItem['dataEntrega'])
     database.push(novoItem)
     fs.writeFile('./database/items.json', JSON.stringify(database), (err) => {
         if (err) return console.log(err);
@@ -50,10 +51,18 @@ const addItem = (request, response) => {
     return response.status(201).json({ message: "Produto criado com sucesso!" })
 }
 
+const prepareItems = (request, response) => {
+    return sort(sort(database, dataEntrega, 'crescente'))
+}
+
 app
     .route('/items')
     .get(getItems)
     .post(addItem)
+
+app
+    .route('/items/prepare')
+    .post(prepareItems)
 
 // Start server
 app.listen(process.env.PORT || 3001, () => {
