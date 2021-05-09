@@ -137,7 +137,7 @@ button:hover,
   width: auto;
 }
 .admin-bar li {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   padding: 0;
 }
 .admin-bar a {
@@ -145,7 +145,7 @@ button:hover,
   color: #fff;
   display: block;
   font-size: 17px;
-  font-weight: 500;
+  font-weight: 400;
   padding: 15px 20px;
   text-align: center;
   text-decoration: none;
@@ -226,7 +226,7 @@ header {
 .user-dashboard h1 {
   color: #000;
   font-size: 30px;
-  font-weight: 500;
+  font-weight: 700;
   margin: 0;
   padding: 21px 0;
 }
@@ -295,7 +295,7 @@ header {
 .card .dropdown-menu > a {
   color: #000;
   display: inline-block;
-  font-weight: 800;
+  font-weight: 600;
   padding: 9px 0;
   text-align: center;
   width: 100%;
@@ -311,21 +311,6 @@ header {
 }
 .card-body .table #details {
   display: none;
-}
-.card-pagination {
-  margin-top: 15px;
-  margin-bottom: 10px;
-}
-.card-pagination ul {
-  margin: 0;
-}
-.user-img {
-  background-color: #f6f7fa;
-  background-position: top center;
-  border-radius: 50%;
-  height: 100px;
-  width: 100px;
-  margin-bottom: 15px;
 }
 
 /* Media Queries */

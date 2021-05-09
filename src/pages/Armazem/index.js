@@ -2,6 +2,7 @@ import React from 'react'
 
 import SideBar from '../../components/SideBar'
 import Header from '../../components/Header'
+import Modal from '../../components/Modal'
 
 const Armazem = () => {
   return(
@@ -67,7 +68,11 @@ const Armazem = () => {
         </div>
 
       </div>
-      
+
+      <div className="modals">
+        <Modal />
+      </div>
+
     </section>
   )
 }

@@ -18,7 +18,7 @@ const Header = () => {
           </nav>
           <div className="search">
             <div className="header-top">
-              <button className="btn btn-danger">Novo Produto</button>
+              <button className="btn btn-danger" data-toggle="modal" data-target="#add_product">Novo Produto</button>
             </div>
           </div>
         </div>
