@@ -21,6 +21,26 @@ export const getProducts = async ({ filterBy, order, porPagina = 10, pagina = 1 
   }
 }
 
+export const prepareProducts = async () => {
+  let response = {}
+
+  try {
+    response = await fetch(`${api}/items/prepare`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+  } catch (err) {
+    console.log(err)
+  } finally {
+    return {
+      status: response.status,
+      body: await response.json()
+    }
+  }
+}
+
 export const addProduct = async (data) => {
   let response = {}
 

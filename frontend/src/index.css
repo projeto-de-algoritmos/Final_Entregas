@@ -30,6 +30,7 @@ img {
 
 input {
   box-shadow: none;
+  color: #333;
 }
 
 h3 {
@@ -313,6 +314,73 @@ header {
   display: none;
 }
 
+.manage-trucks {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+.trucks {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  margin-bottom: 25px;
+}
+.truck {
+  height: 590px; /* 500 */
+  width: 230px; /* 190 */
+  background: #ffffff url("./assets/img/truck.png") no-repeat center;
+  background-size: contain;
+  float: left;
+}
+.truck .products {
+  position: absolute;
+  width: 180px;
+  top: 205px;
+  left: 25px;
+}
+.truck .products p {
+  text-align: center;
+}
+
+.modal-content {
+  border: 0;
+  border-radius: 16px;
+}
+.modal-header {
+  background-color: #5b9af1;
+  border: 0;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 15px;
+}
+.modal-header h4 {
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+}
+.modal-header .close {
+  margin-top: 2px;
+}
+.modal-body {
+  padding: 15px;
+}
+.modal-body textarea {
+  height: 80px;
+}
+.modal-footer {
+  border: 0 none;
+  padding: 10px 15px 20px;
+  text-align: right;
+}
+.btn-black {
+  background: #000;
+}
+.btn-black:hover,
+.btn-black:focus {
+  background: #333;
+  color: #fff;
+}
+
 /* Media Queries */
 @media screen and (min-width: 768px) {
   #navigation {
@@ -360,6 +428,9 @@ header {
   }
   .admin-bar span {
     display: inline;
+  }
+  .trucks {
+    justify-content: space-between;
   }
 }
 
