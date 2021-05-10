@@ -30,7 +30,14 @@ img {
 
 input {
   box-shadow: none;
-  color: #333;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 h3 {
@@ -81,6 +88,7 @@ h5 {
   background-color: #f6f7fa;
   border: none;
   box-shadow: none;
+  color: #333;
 }
 .form-control:focus {
   border-color: #002bde;
@@ -142,7 +150,7 @@ button:hover,
   padding: 0;
 }
 .admin-bar a {
-  border-radius: 20px;
+  border-radius: 0;
   color: #fff;
   display: block;
   font-size: 17px;
@@ -201,6 +209,9 @@ header {
   background-color: #333;
 }
 
+.search {
+  display: inline-block;
+}
 .header-top .btn {
   padding: 10px 27px 10px 45px;
 }
@@ -308,10 +319,8 @@ header {
   margin-top: 20px;
 }
 .card-body .table #icon {
-  display: block;
-}
-.card-body .table #details {
   display: none;
+  margin-left: 15px;
 }
 
 .manage-trucks {
@@ -340,6 +349,12 @@ header {
 }
 .truck .products p {
   text-align: center;
+}
+
+.map-area {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
 }
 
 .modal-content {
@@ -396,10 +411,7 @@ header {
     padding: 2rem;
   }
   .card-body .table #icon {
-    display: none;
-  }
-  .card-body .table #details {
-    display: block;
+    display: inline-block;
   }
   .card-body .form-inline .form-control {
     max-width: 70%;
@@ -419,6 +431,7 @@ header {
   }
   .admin-bar a {
     text-align: left;
+    border-radius: 20px;
   }
   .admin-bar a::after {
     display: block;
