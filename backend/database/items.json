@@ -3,7 +3,7 @@
     "identificador": 8,
     "descricao": "TV 1000 Polegadas",
     "empresa": "LG3",
-    "estado": "Brasília",
+    "estado": "Distrito Federal",
     "dataEntrega": "2021-05-11T03:00:00.000Z"
   },
   {
@@ -45,14 +45,14 @@
     "identificador": 5,
     "descricao": "TV 1000 Polegadas2",
     "empresa": "LG",
-    "estado": "Brasília",
+    "estado": "Distrito Federal",
     "dataEntrega": "2021-05-12T03:00:00.000Z"
   },
   {
     "identificador": 6,
     "descricao": "TV 1000 Polegadas2",
     "empresa": "LG2",
-    "estado": "Brasília",
+    "estado": "Distrito Federal",
     "dataEntrega": "2021-05-13T03:00:00.000Z"
   }
 ]

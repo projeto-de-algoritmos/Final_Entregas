@@ -2,7 +2,9 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const fs = require('fs')
-const database = require('./database/items.json')
+const itemsDatabase = require('./database/items.json')
+const estados = require('./database/estados.json')
+const ufEstados = require('./src/ufEstados.json')
 const { getUtcDateTime, sort, toDate } = require('./src/utils')
 
 const app = express()
@@ -19,10 +21,10 @@ const getItems = (request, response) => {
     if (order && !['crescente', 'decrescente'].find(ord => ord === order))
       return response.status(400).json({ message: "Parâmetro order inválido, deve ser um desses valores: ['crescente', 'decrescente']" })
 
-    const itemsOrdenados = sort(database, request.query.filterBy, request.query.order)
+    const itemsOrdenados = sort(itemsDatabase, request.query.filterBy, request.query.order)
     return response.status(200).json(itemsOrdenados.slice((pagina - 1) * porPagina, pagina * porPagina))
   }
-  response.status(200).json(database.slice((pagina - 1) * porPagina, pagina * porPagina))
+  response.status(200).json(itemsDatabase.slice((pagina - 1) * porPagina, pagina * porPagina))
 }
 
 const addItem = (request, response) => {
@@ -39,12 +41,12 @@ const addItem = (request, response) => {
   if (typeof dataEntrega !== 'string') return response.status(400).json({ message: "Data de Entrega inválida, deve ser uma string e maior do que o dia de hoje" })
   if (dataObjEntrega < dataAgora) return response.status(400).json({ message: "Data de Entrega inválida, deve ser maior do que o dia de hoje" })
 
-  const itemExistente = database.find(item => item.identificador === identificador)
+  const itemExistente = itemsDatabase.find(item => item.identificador === identificador)
   if (itemExistente) return response.status(400).json({ message: "Produto com este identificador já está cadastrado" })
 
   novoItem['dataEntrega'] = toDate(novoItem['dataEntrega'])
-  database.unshift(novoItem)
-  fs.writeFile('./database/items.json', JSON.stringify(database), (err) => {
+  itemsDatabase.unshift(novoItem)
+  fs.writeFile('./database/items.json', JSON.stringify(itemsDatabase), (err) => {
     if (err) return console.log(err);
     console.log('Item salvo com sucesso no banco de dados');
   });
@@ -52,7 +54,25 @@ const addItem = (request, response) => {
 }
 
 const prepareItems = (request, response) => {
-  return sort(sort(database, dataEntrega, 'crescente'))
+  const caminhoes = {
+    "norte": 1,
+    "nordeste": 2,
+    "centro-oeste": 3,
+    "sudeste": 4,
+    "sul": 5
+  }
+
+  const itemsOrdenados = sort(itemsDatabase, 'dataEntrega', 'crescente')
+  for (let i = 0; i < itemsOrdenados.length; i++) {
+    const itemEstado = itemsOrdenados[i]['estado']
+    const ufItemEstado = ufEstados[itemEstado]
+    const estado = estados[ufItemEstado]
+    const caminhao = caminhoes[estado['regiao']]
+
+    itemsOrdenados[i].caminhao = caminhao
+  }
+
+  return response.status(200).json({ message: "Produto criado com sucesso!" })
 }
 
 app
