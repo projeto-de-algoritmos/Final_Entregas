@@ -71,7 +71,7 @@ const Caminhao = () => {
                 <div className="col-xs-12">
                   <div className="card">
                     <div className="card-header">
-                      <h2>Gerenciamento</h2>
+                      <h2>Gerenciamento de Entregas</h2>
                     </div>
                     <div className="card-body">
                       <div className='manage-trucks'>

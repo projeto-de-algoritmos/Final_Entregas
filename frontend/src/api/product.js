@@ -41,6 +41,26 @@ export const prepareProducts = async () => {
   }
 }
 
+export const getRoutes = async () => {
+  let response = {}
+
+  try {
+    response = await fetch(`${api}/routes`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+  } catch (err) {
+    console.log(err)
+  } finally {
+    return {
+      status: response.status,
+      body: await response.json()
+    }
+  }
+} 
+
 export const addProduct = async (data) => {
   let response = {}
 
