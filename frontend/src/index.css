@@ -31,6 +31,14 @@ img {
 input {
   box-shadow: none;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
 
 h3 {
   font-size: 20px;
@@ -80,6 +88,7 @@ h5 {
   background-color: #f6f7fa;
   border: none;
   box-shadow: none;
+  color: #333;
 }
 .form-control:focus {
   border-color: #002bde;
@@ -141,7 +150,7 @@ button:hover,
   padding: 0;
 }
 .admin-bar a {
-  border-radius: 20px;
+  border-radius: 0;
   color: #fff;
   display: block;
   font-size: 17px;
@@ -200,6 +209,9 @@ header {
   background-color: #333;
 }
 
+.search {
+  display: inline-block;
+}
 .header-top .btn {
   padding: 10px 27px 10px 45px;
 }
@@ -307,10 +319,101 @@ header {
   margin-top: 20px;
 }
 .card-body .table #icon {
-  display: block;
-}
-.card-body .table #details {
   display: none;
+  margin-left: 15px;
+}
+
+.pagination > li > a {
+  border: 1px solid #dadee7;
+  padding: 10px 15px;
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;
+}
+.pagination > li > a:focus,
+.pagination > li > a:hover {
+  color: #000;
+  background-color: #dadee7;
+}
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover {
+  color: #000;
+  background-color: #dadee7;
+  border-color: #dadee7;
+}
+
+.manage-trucks {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+.trucks {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  margin-bottom: 25px;
+}
+.truck {
+  height: 590px; /* 500 */
+  width: 230px; /* 190 */
+  background: #ffffff url("./assets/img/truck.png") no-repeat center;
+  background-size: contain;
+  float: left;
+}
+.truck .products {
+  position: absolute;
+  width: 180px;
+  top: 205px;
+  left: 25px;
+}
+.truck .products p {
+  text-align: center;
+}
+
+.map-area {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.modal-content {
+  border: 0;
+  border-radius: 16px;
+}
+.modal-header {
+  background-color: #5b9af1;
+  border: 0;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 15px;
+}
+.modal-header h4 {
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+}
+.modal-header .close {
+  margin-top: 2px;
+}
+.modal-body {
+  padding: 15px;
+}
+.modal-body textarea {
+  height: 80px;
+}
+.modal-footer {
+  border: 0 none;
+  padding: 10px 15px 20px;
+  text-align: right;
+}
+.btn-black {
+  background: #000;
+}
+.btn-black:hover,
+.btn-black:focus {
+  background: #333;
+  color: #fff;
 }
 
 /* Media Queries */
@@ -328,10 +431,7 @@ header {
     padding: 2rem;
   }
   .card-body .table #icon {
-    display: none;
-  }
-  .card-body .table #details {
-    display: block;
+    display: inline-block;
   }
   .card-body .form-inline .form-control {
     max-width: 70%;
@@ -351,6 +451,7 @@ header {
   }
   .admin-bar a {
     text-align: left;
+    border-radius: 20px;
   }
   .admin-bar a::after {
     display: block;
@@ -360,6 +461,9 @@ header {
   }
   .admin-bar span {
     display: inline;
+  }
+  .trucks {
+    justify-content: space-between;
   }
 }
 

@@ -31,13 +31,11 @@ const Modal = () => {
       deliverDate,
     }
 
-    const response = await addProduct(product)
+    const { status } = await addProduct(product)
 
-    if (response.status === 201) {
+    if (status === 201) {
       closeProductModal()
       window.location.reload()
-    } else {
-      console.log(response.status)
     }
   }
 
@@ -109,7 +107,7 @@ const Modal = () => {
             </div>
             <div className="modal-footer">
               <button onClick={closeProductModal} type="button" className="btn btn-black">Cancelar</button>
-              <button type="submit" className="btn btn-danger">Salvar</button>
+              <button type="submit" className="btn btn-primary">Salvar</button>
             </div>
           </form>
         </div>
