@@ -1,3 +1,5 @@
+const estados = require('../database/estados.json')
+
 const getUtcDateTime = (offset = '0') => {
   var d = new Date()
   var utc = d.getTime() - (d.getTimezoneOffset() * 60000)
@@ -40,4 +42,62 @@ const sort = (items, filter, order = 'crescente') => {
   return itemsOrdenados
 }
 
-module.exports = { getUtcDateTime, sort, toDate }
+const buildRoute = (startState, endState, mustVisitStates, numberOfMustVisitStates) => {
+  const queue = []
+  // const routeStates = []
+  let visited = {}
+  let distances = {}
+  let parents = {}
+
+  queue.push(estados[startState])
+  visited[startState] = true
+  distances[startState] = 0
+  // routeStates.push(startState)
+
+  while (queue.length > 0) {
+    const currentNode = queue[0]
+    queue.shift()
+
+    if (currentNode.sigla === endState) {
+      // routeStates.push(endState)
+      // return parents
+      break;
+    }
+
+    // if (mustVisitStates.findIndex(state => state.sigla === currentNode.sigla) >= 0) {
+    //   routeStates.push(currentNode.sigla)
+    // }
+
+    currentNode.arestas.forEach(({ sigla: neigh }) => {
+      if (!visited[neigh]) {
+        distances[neigh] = distances[currentNode.sigla] + 1
+        parents[neigh] = currentNode.sigla
+        // if (mustVisitStates.findIndex(state => state.sigla === neigh) >= 0) {
+        //   routeStates.push(estados[neigh])
+        // }
+
+        visited[neigh] = true
+        queue.push(estados[neigh])
+      }
+    })
+  }
+
+  const path = []
+  let parent = estados[endState].sigla
+
+  while (parent !== estados[startState].sigla) {
+    path.unshift(estados[parent])
+    parent = parents[parent]
+  }
+  path.unshift(estados[parent])
+
+  const arestas = []
+  for (let i = 1; i < path.length; i++) {
+    arestas.push(`${path[i - 1].sigla}-${path[i].sigla}`)
+  }
+
+  return { estados: path.map(p => p.sigla), arestas }
+}
+
+// console.log(buildRoute('DF', 'SP', []))
+module.exports = { getUtcDateTime, sort, toDate, buildRoute }

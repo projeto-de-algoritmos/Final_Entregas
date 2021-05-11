@@ -84,6 +84,10 @@ app
   .route('/items/prepare')
   .post(prepareItems)
 
+app
+  .route('/routes')
+  .post(getRoutes)
+
 // Start server
 app.listen(process.env.PORT || 3001, () => {
   console.log(`Server listening on port`, process.env.PORT || 3001)
