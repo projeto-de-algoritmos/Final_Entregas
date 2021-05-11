@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import queryString from 'query-string'
 import moment from 'moment'
 
 import SideBar from '../../components/SideBar'
 import Header from '../../components/Header'
+import Pagination from '../../components/Pagination'
 import Modal from '../../components/Modal'
 
 import { getProducts } from '../../api/product'
@@ -19,6 +21,10 @@ const Armazem = () => {
   const [products, setProducts] = useState([])
   const [filter, setFilter] = useState(columns[0])
   const [order, setOrder] = useState('crescente')
+
+  const query = queryString.parse(window.location.search)
+  const [currentPage, setCurrentPage] = useState(query.page)
+  const [maxPages, setMaxPages] = useState(1)
 
   const getSortIcon = (type) => {
     if (filter.value === type.value) {
@@ -43,18 +49,26 @@ const Armazem = () => {
   }
 
   useEffect(() => {
+    setCurrentPage(query.page)
+  }, [query.page])
+
+  useEffect(() => {
     (async () => {
       const params = {
         filterBy: filter.value,
         order: order,
         porPagina: 10,
-        pagina: 1,
+        pagina: currentPage ? currentPage : "1",
       }
 
       const { status, body } = await getProducts(params)
-      if (status === 200) setProducts(body)
+
+      if (status === 200) {
+        setProducts(body)
+        setMaxPages(1)
+      }
     })()
-  }, [filter, order])
+  }, [filter, order, currentPage])
 
   return (
     <section className="dashboard">
@@ -111,6 +125,13 @@ const Armazem = () => {
                         </tbody>
                       </table>
                     </div>
+
+                    {maxPages > 1 &&
+                      <Pagination
+                        currentPage={currentPage ? currentPage : "1"}
+                        maxPages={maxPages}
+                      />
+                    }
                   </div>
                 </div>
 
