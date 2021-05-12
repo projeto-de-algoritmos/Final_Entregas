@@ -39,6 +39,12 @@ const Modal = () => {
     }
   }
 
+  const estados = [
+    "Acre", "Alagoas", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás",
+    "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí",
+    "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"
+  ]
+
   return (
     <div id="add_product" className="modal fade" data-backdrop="static" role="dialog">
       <div className="modal-dialog">
@@ -83,15 +89,16 @@ const Modal = () => {
                 />
               </div>
               <div className="form-group">
-                <input
-                  type="text"
+                <select
                   value={state}
-                  placeholder="Estado"
-                  className="form-control"
-                  name="product_state"
                   onChange={e => setState(e.target.value)}
+                  className="form-control"
                   required
-                />
+                >
+                  {estados.map((estado, index) => (
+                    <option key={index} value={estado}>{estado}</option>
+                  ))}
+                </select>
               </div>
               <div className="form-group">
                 <input

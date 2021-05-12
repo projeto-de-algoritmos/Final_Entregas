@@ -97,7 +97,7 @@ const dijkstra = (startState, endState) => {
   return { path, arestas }
 }
 
-const buildRoute = (states) => {
+const buildRoute = (states, startState) => {
 
   if (states.length === 0) {
     return { estados: [], arestas: [] }
@@ -106,8 +106,8 @@ const buildRoute = (states) => {
   }
 
   const statesOrdenados = states.sort((stateA, stateB) => {
-    if ((distancias[`${stateA}:${states[0]}`] || distancias[`${states[0]}:${stateA}`]) <
-      (distancias[`${stateB}:${states[0]}`] || distancias[`${states[0]}:${stateB}`])) return -1
+    if ((distancias[`${stateA}:${startState}`] || distancias[`${startState}:${stateA}`]) <
+      (distancias[`${stateB}:${startState}`] || distancias[`${startState}:${stateB}`])) return -1
     else return 1
   })
 

@@ -1,44 +1,52 @@
-**!! Atenção: Renomeie o seu repositório para (Tema)_(NomeDoProjeto). !!** 
+# Entregas
 
-Temas:
- - Grafos1
- - Grafos2
- - PD
- - D&C
- - Greed
- - Final 
- 
- **!! *Não coloque os nomes dos alunos no título do repositório*. Exemplo de título correto: Grafos2_Labirinto-do-Minotauro !!**
- 
- (Apague essa seção)
-
-# NomedoProjeto
-
-**Número da Lista**: X<br>
-**Conteúdo da Disciplina**: XXXXXXXXXX<br>
+**Número da Lista**: 2<br>
+**Conteúdo da Disciplina**: Grafos, Programação Dinâmica e Dividir e Conquistar<br>
 
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 18/0113666  |  Ítalo Álves Guimarães  |
+| 18/0114689  |  Tiago Samuel Rodrigues |
 
 ## Sobre 
-Descreva os objetivos do seu projeto e como ele funciona. 
+Este projeto tem como finalidade utilizar algoritmos da disciplina de projeto de algoritmos em uma aplicação real. Nosso aplicação é destinado
+a uma distribuidora, com o objetivo de facilitar a gerência de seus produtos e o desenvolvimento das rotas de seus caminhões.
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+<img src='./screenshots/img1.png' />
+<img src='./screenshots/img2.png' />
+<img src='./screenshots/img3.png' />
 
 ## Instalação 
-**Linguagem**: xxxxxx<br>
-**Framework**: (caso exista)<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+**Linguagem**: Javascript<br>
+**Framework**: React, Node.js<br>
 
-## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
+## Requisitos
+yarn ou npm
 
-## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
+## Como rodar
+1) Navegue até a pasta frontend e rode
+```
+npm install
+npm start
+```
+ou
+```
+yarn
+yarn start
+```
+
+2) Abra outro terminal e navegue até a pasta backend e rode
+```
+npm install
+npm start
+```
+ou
+```
+yarn
+yarn start
+```
 
 
 

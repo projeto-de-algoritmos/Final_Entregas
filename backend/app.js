@@ -99,25 +99,25 @@ const getRoutes = (request, response) => {
   }
 
   const regiao = {
-    norte: ['Acre', 'Amapá', 'Roraima', 'Rondônia', 'Pará', 'Tocantis'],
+    norte: ['Acre', 'Amapá', 'Roraima', 'Rondônia', 'Pará', 'Tocantins'],
     nordeste: ['Maranhão', 'Piauí', 'Bahia', 'Ceará', 'Rio Grande do Norte', 'Paraíba', 'Pernambuco', 'Alagoas', 'Sergipe'],
     centroOeste: ['Distrito Federal', 'Mato Grosso do Sul', 'Goiás', 'Mato Grosso'],
     sudeste: ['Minas Gerais', 'São Paulo', 'Espírito Santo', 'Rio de Janeiro'],
     sul: ['Paraná', 'Santa Catarina', 'Rio Grande do Sul'],
   }
 
-  const produtosNorte = [...new Set(itemsOrdenados.filter(i => regiao.norte.includes(i.estado)).map(p => ufEstados[p.estado])), 'DF']
-  const produtosNordeste = [...new Set(itemsOrdenados.filter(i => regiao.nordeste.includes(i.estado)).map(p => ufEstados[p.estado])), 'DF']
-  const produtosCentroOeste = [...new Set(itemsOrdenados.filter(i => regiao.centroOeste.includes(i.estado)).map(p => ufEstados[p.estado])), 'DF']
-  const produtosSudeste = [...new Set(itemsOrdenados.filter(i => regiao.sudeste.includes(i.estado)).map(p => ufEstados[p.estado])), 'DF']
-  const produtosSul = [...new Set(itemsOrdenados.filter(i => regiao.sul.includes(i.estado)).map(p => ufEstados[p.estado])), 'DF']
+  const produtosNorte = ['PA', ...new Set(itemsOrdenados.filter(i => regiao.norte.includes(i.estado)).map(p => ufEstados[p.estado]))]
+  const produtosNordeste = ['BA', ...new Set(itemsOrdenados.filter(i => regiao.nordeste.includes(i.estado)).map(p => ufEstados[p.estado]))]
+  const produtosCentroOeste = ['DF', ...new Set(itemsOrdenados.filter(i => regiao.centroOeste.includes(i.estado)).map(p => ufEstados[p.estado]))]
+  const produtosSudeste = ['DF', ...new Set(itemsOrdenados.filter(i => regiao.sudeste.includes(i.estado)).map(p => ufEstados[p.estado]))]
+  const produtosSul = ['DF', ...new Set(itemsOrdenados.filter(i => regiao.sul.includes(i.estado)).map(p => ufEstados[p.estado]))]
 
   const routes = {
-    1: buildRoute(produtosNorte),
-    2: buildRoute(produtosNordeste),
-    3: buildRoute(produtosCentroOeste),
-    4: buildRoute(produtosSudeste),
-    5: buildRoute(produtosSul),
+    1: buildRoute(produtosNorte, 'PA'),
+    2: buildRoute(produtosNordeste, 'BA'),
+    3: buildRoute(produtosCentroOeste, 'DF'),
+    4: buildRoute(produtosSudeste, 'DF'),
+    5: buildRoute(produtosSul, 'DF'),
   }
 
   return response.status(200).json(routes)
