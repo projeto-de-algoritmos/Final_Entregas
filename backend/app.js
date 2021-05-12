@@ -5,7 +5,7 @@ const fs = require('fs')
 const itemsDatabase = require('./database/items.json')
 const estados = require('./database/estados.json')
 const ufEstados = require('./src/ufEstados.json')
-const { getUtcDateTime, sort, toDate } = require('./src/utils')
+const { getUtcDateTime, sort, toDate, buildRoute } = require('./src/utils')
 
 const app = express()
 
@@ -22,7 +22,11 @@ const getItems = (request, response) => {
       return response.status(400).json({ message: "Parâmetro order inválido, deve ser um desses valores: ['crescente', 'decrescente']" })
 
     const itemsOrdenados = sort(itemsDatabase, request.query.filterBy, request.query.order)
-    return response.status(200).json(itemsOrdenados.slice((pagina - 1) * porPagina, pagina * porPagina))
+    return response.status(200).json({
+      data: itemsOrdenados.slice((pagina - 1) * porPagina, pagina * porPagina),
+      totalProdutos: itemsOrdenados.length,
+      totalPaginas: Math.ceil(itemsOrdenados.length / porPagina)
+    })
   }
   response.status(200).json(itemsDatabase.slice((pagina - 1) * porPagina, pagina * porPagina))
 }
@@ -72,7 +76,51 @@ const prepareItems = (request, response) => {
     itemsOrdenados[i].caminhao = caminhao
   }
 
-  return response.status(200).json({ message: "Produto criado com sucesso!" })
+  return response.status(200).json(itemsOrdenados)
+}
+
+const getRoutes = (request, response) => {
+  const caminhoes = {
+    "norte": 1,
+    "nordeste": 2,
+    "centro-oeste": 3,
+    "sudeste": 4,
+    "sul": 5
+  }
+
+  const itemsOrdenados = sort(itemsDatabase, 'dataEntrega', 'crescente')
+  for (let i = 0; i < itemsOrdenados.length; i++) {
+    const itemEstado = itemsOrdenados[i]['estado']
+    const ufItemEstado = ufEstados[itemEstado]
+    const estado = estados[ufItemEstado]
+    const caminhao = caminhoes[estado['regiao']]
+
+    itemsOrdenados[i].caminhao = caminhao
+  }
+
+  const regiao = {
+    norte: ['Acre', 'Amapá', 'Roraima', 'Rondônia', 'Pará', 'Tocantis'],
+    nordeste: ['Maranhão', 'Piauí', 'Bahia', 'Ceará', 'Rio Grande do Norte', 'Paraíba', 'Pernambuco', 'Alagoas', 'Sergipe'],
+    centroOeste: ['Distrito Federal', 'Mato Grosso do Sul', 'Goiás', 'Mato Grosso'],
+    sudeste: ['Minas Gerais', 'São Paulo', 'Espírito Santo', 'Rio de Janeiro'],
+    sul: ['Paraná', 'Santa Catarina', 'Rio Grande do Sul'],
+  }
+
+  const produtosNorte = [...new Set(itemsOrdenados.filter(i => regiao.norte.includes(i.estado)).map(p => ufEstados[p.estado])), 'DF']
+  const produtosNordeste = [...new Set(itemsOrdenados.filter(i => regiao.nordeste.includes(i.estado)).map(p => ufEstados[p.estado])), 'DF']
+  const produtosCentroOeste = [...new Set(itemsOrdenados.filter(i => regiao.centroOeste.includes(i.estado)).map(p => ufEstados[p.estado])), 'DF']
+  const produtosSudeste = [...new Set(itemsOrdenados.filter(i => regiao.sudeste.includes(i.estado)).map(p => ufEstados[p.estado])), 'DF']
+  const produtosSul = [...new Set(itemsOrdenados.filter(i => regiao.sul.includes(i.estado)).map(p => ufEstados[p.estado])), 'DF']
+
+  const routes = {
+    0: buildRoute(produtosNordeste),
+    1: buildRoute(produtosSul),
+    3: buildRoute(produtosSudeste),
+    2: buildRoute(produtosCentroOeste),
+    4: buildRoute(produtosNorte),
+  }
+
+  return response.status(200).json(routes)
 }
 
 app

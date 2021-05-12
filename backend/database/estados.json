@@ -25,16 +25,6 @@
     ],
     "regiao": "nordeste"
   },
-  "AP": {
-    "nome": "Amapá",
-    "sigla": "AP",
-    "arestas": [
-      {
-        "sigla": "PA"
-      }
-    ],
-    "regiao": "norte"
-  },
   "AM": {
     "nome": "Amazonas",
     "sigla": "AM",
@@ -250,9 +240,6 @@
     "nome": "Pará",
     "sigla": "PA",
     "arestas": [
-      {
-        "sigla": "AP"
-      },
       {
         "sigla": "RR"
       },

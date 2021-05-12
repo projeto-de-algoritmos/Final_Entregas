@@ -3,56 +3,182 @@
     "identificador": 8,
     "descricao": "TV 1000 Polegadas",
     "empresa": "LG3",
-    "estado": "Distrito Federal",
+    "estado": "Acre",
     "dataEntrega": "2021-05-11T03:00:00.000Z"
   },
   {
     "identificador": 7,
     "descricao": "TV 1000 Polegadas",
     "empresa": "LG",
-    "estado": "São Paulo",
+    "estado": "Alagoas",
     "dataEntrega": "2021-06-05T03:00:00.000Z"
   },
   {
     "identificador": 2,
     "descricao": "TV 1000 Polegadas",
     "empresa": "LG",
-    "estado": "São Paulo",
+    "estado": "Amazonas",
     "dataEntrega": "2021-05-08T03:00:00.000Z"
   },
   {
     "identificador": 1,
     "descricao": "TV 1000 Polegadas",
     "empresa": "LG",
-    "estado": "São Paulo",
+    "estado": "Bahia",
     "dataEntrega": "2021-05-09T03:00:00.000Z"
   },
   {
     "identificador": 3,
     "descricao": "TV 1000 Polegadas",
     "empresa": "LG",
-    "estado": "São Paulo",
+    "estado": "Ceará",
     "dataEntrega": "2021-05-10T03:00:00.000Z"
   },
   {
     "identificador": 4,
     "descricao": "TV 1000 Polegadas2",
     "empresa": "LG",
-    "estado": "São Paulo",
+    "estado": "Distrito Federal",
     "dataEntrega": "2021-05-11T03:00:00.000Z"
   },
   {
     "identificador": 5,
     "descricao": "TV 1000 Polegadas2",
     "empresa": "LG",
-    "estado": "Distrito Federal",
+    "estado": "Espírito Santo",
     "dataEntrega": "2021-05-12T03:00:00.000Z"
   },
   {
     "identificador": 6,
     "descricao": "TV 1000 Polegadas2",
     "empresa": "LG2",
-    "estado": "Distrito Federal",
+    "estado": "Goiás",
+    "dataEntrega": "2021-05-13T03:00:00.000Z"
+  },
+  {
+    "identificador": 6,
+    "descricao": "TV 1000 Polegadas2",
+    "empresa": "LG2",
+    "estado": "Maranhão",
+    "dataEntrega": "2021-05-13T03:00:00.000Z"
+  },
+  {
+    "identificador": 6,
+    "descricao": "TV 1000 Polegadas2",
+    "empresa": "LG2",
+    "estado": "Mato Grosso",
+    "dataEntrega": "2021-05-13T03:00:00.000Z"
+  },
+  {
+    "identificador": 6,
+    "descricao": "TV 1000 Polegadas2",
+    "empresa": "LG2",
+    "estado": "Mato Grosso do Sul",
+    "dataEntrega": "2021-05-13T03:00:00.000Z"
+  },
+  {
+    "identificador": 6,
+    "descricao": "TV 1000 Polegadas2",
+    "empresa": "LG2",
+    "estado": "Minas Gerais",
+    "dataEntrega": "2021-05-13T03:00:00.000Z"
+  },
+  {
+    "identificador": 6,
+    "descricao": "TV 1000 Polegadas2",
+    "empresa": "LG2",
+    "estado": "Pará",
+    "dataEntrega": "2021-05-13T03:00:00.000Z"
+  },
+  {
+    "identificador": 6,
+    "descricao": "TV 1000 Polegadas2",
+    "empresa": "LG2",
+    "estado": "Paraíba",
+    "dataEntrega": "2021-05-13T03:00:00.000Z"
+  },
+  {
+    "identificador": 6,
+    "descricao": "TV 1000 Polegadas2",
+    "empresa": "LG",
+    "estado": "Paraná",
+    "dataEntrega": "2021-05-13T03:00:00.000Z"
+  },
+  {
+    "identificador": 6,
+    "descricao": "TV 1000 Polegadas2",
+    "empresa": "LG2",
+    "estado": "Pernambuco",
+    "dataEntrega": "2021-05-13T03:00:00.000Z"
+  },
+  {
+    "identificador": 6,
+    "descricao": "TV 1000 Polegadas2",
+    "empresa": "LG2",
+    "estado": "Piauí",
+    "dataEntrega": "2021-05-13T03:00:00.000Z"
+  },
+  {
+    "identificador": 6,
+    "descricao": "TV 1000 Polegadas2",
+    "empresa": "LG2",
+    "estado": "Rio de Janeiro",
+    "dataEntrega": "2021-05-13T03:00:00.000Z"
+  },
+  {
+    "identificador": 6,
+    "descricao": "TV 1000 Polegadas2",
+    "empresa": "LG2",
+    "estado": "Rio Grande do Norte",
+    "dataEntrega": "2021-05-13T03:00:00.000Z"
+  },
+  {
+    "identificador": 6,
+    "descricao": "TV 1000 Polegadas2",
+    "empresa": "LG2",
+    "estado": "Rio Grande do Sul",
+    "dataEntrega": "2021-05-13T03:00:00.000Z"
+  },
+  {
+    "identificador": 6,
+    "descricao": "TV 1000 Polegadas2",
+    "empresa": "LG2",
+    "estado": "Rondônia",
+    "dataEntrega": "2021-05-13T03:00:00.000Z"
+  },
+  {
+    "identificador": 6,
+    "descricao": "TV 1000 Polegadas2",
+    "empresa": "LG2",
+    "estado": "Roraima",
+    "dataEntrega": "2021-05-13T03:00:00.000Z"
+  },
+  {
+    "identificador": 6,
+    "descricao": "TV 1000 Polegadas2",
+    "empresa": "LG2",
+    "estado": "Santa Catarina",
+    "dataEntrega": "2021-05-13T03:00:00.000Z"
+  },
+  {
+    "identificador": 6,
+    "descricao": "TV 1000 Polegadas2",
+    "empresa": "LG2",
+    "estado": "São Paulo",
+    "dataEntrega": "2021-05-13T03:00:00.000Z"
+  },
+  {
+    "identificador": 6,
+    "descricao": "TV 1000 Polegadas2",
+    "empresa": "LG2",
+    "estado": "Sergipe",
+    "dataEntrega": "2021-05-13T03:00:00.000Z"
+  },
+  {
+    "identificador": 6,
+    "descricao": "TV 1000 Polegadas2",
+    "empresa": "LG2",
+    "estado": "Tocantins",
     "dataEntrega": "2021-05-13T03:00:00.000Z"
   }
 ]

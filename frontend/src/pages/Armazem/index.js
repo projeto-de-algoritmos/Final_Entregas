@@ -64,8 +64,8 @@ const Armazem = () => {
       const { status, body } = await getProducts(params)
 
       if (status === 200) {
-        setProducts(body)
-        setMaxPages(1)
+        setProducts(body.data)
+        setMaxPages(body.totalPaginas)
       }
     })()
   }, [filter, order, currentPage])

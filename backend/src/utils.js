@@ -1,4 +1,5 @@
 const estados = require('../database/estados.json')
+const distancias = require('./distancias.json')
 
 const getUtcDateTime = (offset = '0') => {
   var d = new Date()
@@ -42,40 +43,37 @@ const sort = (items, filter, order = 'crescente') => {
   return itemsOrdenados
 }
 
-const buildRoute = (startState, endState, mustVisitStates, numberOfMustVisitStates) => {
+const dijkstra = (startState, endState) => {
   const queue = []
-  // const routeStates = []
-  let visited = {}
   let distances = {}
   let parents = {}
+  let visited = {}
 
   queue.push(estados[startState])
-  visited[startState] = true
+
+  Object.keys(estados).forEach(state => {
+    distances[state] = Infinity
+    parents[state] = -1
+    visited[state] = false
+  })
+
   distances[startState] = 0
-  // routeStates.push(startState)
 
   while (queue.length > 0) {
     const currentNode = queue[0]
     queue.shift()
 
     if (currentNode.sigla === endState) {
-      // routeStates.push(endState)
-      // return parents
       break;
     }
 
-    // if (mustVisitStates.findIndex(state => state.sigla === currentNode.sigla) >= 0) {
-    //   routeStates.push(currentNode.sigla)
-    // }
-
     currentNode.arestas.forEach(({ sigla: neigh }) => {
-      if (!visited[neigh]) {
-        distances[neigh] = distances[currentNode.sigla] + 1
+      const alt = distances[currentNode.sigla] + (distancias[`${currentNode.sigla}:${neigh}`] || distancias[`${neigh}:${currentNode.sigla}`])
+      if (alt < distances[neigh]) {
+        distances[neigh] = alt
         parents[neigh] = currentNode.sigla
-        // if (mustVisitStates.findIndex(state => state.sigla === neigh) >= 0) {
-        //   routeStates.push(estados[neigh])
-        // }
-
+      }
+      if (visited[neigh] === false) {
         visited[neigh] = true
         queue.push(estados[neigh])
       }
@@ -83,9 +81,9 @@ const buildRoute = (startState, endState, mustVisitStates, numberOfMustVisitStat
   }
 
   const path = []
-  let parent = estados[endState].sigla
+  let parent = endState
 
-  while (parent !== estados[startState].sigla) {
+  while (parent !== startState) {
     path.unshift(estados[parent])
     parent = parents[parent]
   }
@@ -96,8 +94,34 @@ const buildRoute = (startState, endState, mustVisitStates, numberOfMustVisitStat
     arestas.push(`${path[i - 1].sigla}-${path[i].sigla}`)
   }
 
-  return { estados: path.map(p => p.sigla), arestas }
+  return { path, arestas }
 }
 
-// console.log(buildRoute('DF', 'SP', []))
+const buildRoute = (states) => {
+
+  if (states.length === 0) {
+    return { estados: [], arestas: [] }
+  } else if (states.length === 1) {
+    return { estados: states, arestas: [] }
+  }
+
+  const statesOrdenados = states.sort((stateA, stateB) => {
+    if ((distancias[`${stateA}:${states[0]}`] || distancias[`${states[0]}:${stateA}`]) <
+      (distancias[`${stateB}:${states[0]}`] || distancias[`${states[0]}:${stateB}`])) return -1
+    else return 1
+  })
+
+  let path = [], arestas = []
+  for (let i = 1; i < statesOrdenados.length; i++) {
+    const { path: pathAux, arestas: arestasAux } = dijkstra(statesOrdenados[i - 1], statesOrdenados[i])
+    path = path.concat(pathAux)
+    arestas = arestas.concat(arestasAux)
+  }
+
+  path = [...new Set(path)]
+  arestas = [...new Set(arestas)]
+
+  return { estados: path.map(p => p.sigla), arestas: arestas }
+}
+
 module.exports = { getUtcDateTime, sort, toDate, buildRoute }
