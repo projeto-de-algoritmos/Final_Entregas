@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import queryString from 'query-string'
 
 import SideBar from '../../components/SideBar'
 import Header from '../../components/Header'
@@ -9,33 +11,48 @@ import { getRoutes } from '../../api/product'
 import { drawRoute } from '../../utils/drawRoute'
 
 const options = [
-  { label: 'Norte', value: 0 },
-  { label: 'Nordeste', value: 1 },
-  { label: 'Centro-Oeste', value: 2 },
-  { label: 'Sudeste', value: 3 },
-  { label: 'Sul', value: 4 },
+  { label: 'Norte', value: 1 },
+  { label: 'Nordeste', value: 2 },
+  { label: 'Centro-Oeste', value: 3 },
+  { label: 'Sudeste', value: 4 },
+  { label: 'Sul', value: 5 },
 ]
 
 const Rotas = () => {
   const [routes, setRoutes] = useState({})
   const [filter, setFilter] = useState(options[0])
 
+  const history = useHistory()
+  const query = queryString.parse(window.location.search)
+
   const getMapRoute = (routes, route) => {
     drawRoute(routes[route])
   }
 
-  const handleFilter = (option) => {
-    setFilter(option)
-    getMapRoute(routes, option.value)
-  }
+  useEffect(() => {
+    if (routes[1]) {
+      getMapRoute(routes, filter.value)
+    }
+  }, [routes, filter.value])
+
+  useEffect(() => {
+    if (!query.organizado) {
+      const alert = window.confirm(
+        'Organize as entregas em Caminhões antes de ver as Rotas.'
+      )
+
+      if (alert === true) {
+        history.push('/caminhoes')
+      } else {
+        history.push('/caminhoes')
+      }
+    }
+  }, [history, query.organizado])
 
   useEffect(() => {
     (async () => {
       const { status, body } = await getRoutes()
-      if (status === 200) {
-        setRoutes(body)
-        getMapRoute(body, 0)
-      }
+      if (status === 200) setRoutes(body)
     })()
   }, [])
 
@@ -69,20 +86,15 @@ const Rotas = () => {
                           <span>Caminhão:</span> {filter.label}
                         </button>
                         <div className="dropdown-menu">
-                          {options.map((option) => {
-                            if (option.value !== filter.value) {
-                              return (
-                                <a
-                                  key={option.value}
-                                  onClick={() => handleFilter(option)}
-                                  href={`#${option.label}`}
-                                >
-                                  {option.label}
-                                </a>
-                              )
-                            }
-                            return null
-                          })}
+                          {options.map((option) => (
+                            <a
+                              key={option.value}
+                              onClick={() => setFilter(option)}
+                              href={`#${option.label}`}
+                            >
+                              {option.label}
+                            </a>
+                          ))}
                         </div>
                       </div>
                     </div>

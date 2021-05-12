@@ -5,6 +5,7 @@ import logoImg from '../assets/img/logo.png'
 
 const SideBar = (props) => {
   const nav = props.nav
+  const query = props.query
 
   return (
     <div className="col-md-2 col-sm-1 col-xs-1 display-table-cell v-align box" id="navigation">
@@ -30,7 +31,7 @@ const SideBar = (props) => {
             </Link>
           </li>
           <li className={nav === "rotas" ? "active" : null}>
-            <Link to="/rotas">
+            <Link to={`/rotas${query === 'organizado' ? '?organizado=true' : ''}`}>
               <i className="fa fa-route" aria-hidden="true"></i>
               <span className="hidden-xs">Rotas de caminhões</span>
             </Link>

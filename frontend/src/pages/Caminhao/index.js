@@ -8,6 +8,7 @@ import { prepareProducts } from '../../api/product'
 
 const Caminhao = () => {
   const [products, setProducts] = useState([])
+  const [isManaged, setIsManaged] = useState(false)
 
   const [truck1, setTruck1] = useState([])
   const [truck2, setTruck2] = useState([])
@@ -15,36 +16,38 @@ const Caminhao = () => {
   const [truck4, setTruck4] = useState([])
   const [truck5, setTruck5] = useState([])
 
-  const manageTrucks = () => {
+  const setTruck = (setFunc, product, i) => {
     const time = 1000
 
-    products.forEach((product, i) => {
-      if (product.caminhao === 1) {
-        setTimeout(() => {
-          setTruck1([...truck1, product])
-        }, i * time)
-      } else if (product.caminhao === 2) {
-        setTimeout(() => {
-          setTruck2([...truck2, product])
-        }, i * time)
-      } else if (product.caminhao === 3) {
-        setTimeout(() => {
-          setTruck3([...truck3, product])
-        }, i * time)
-      } else if (product.caminhao === 4) {
-        setTimeout(() => {
-          setTruck4([...truck4, product])
-        }, i * time)
-      } else if (product.caminhao === 5) {
-        setTimeout(() => {
-          setTruck5([...truck5, product])
-        }, i * time)
-      }
+    setTimeout(() => {
+      setFunc(products => [...products, product])
+      setProducts(products => products.slice(1))
+    }, i * time)
+  }
 
-      setTimeout(() => {
-        products.shift()
-      }, i * time)
+  const manageTrucks = () => {
+    products.forEach((product, i) => {
+      switch(product.caminhao) {
+        case 1:
+          setTruck(setTruck1, product, i)
+          break;
+        case 2:
+          setTruck(setTruck2, product, i)
+          break;
+        case 3:
+          setTruck(setTruck3, product, i)
+          break;
+        case 4:
+          setTruck(setTruck4, product, i)
+          break;
+        case 5:
+          setTruck(setTruck5, product, i)
+          break;
+        default:
+          break;
+      }
     })
+    setIsManaged(true)
   }
 
   useEffect(() => {
@@ -58,7 +61,7 @@ const Caminhao = () => {
     <section className="dashboard">
       <div className="container-fluid display-table">
         <div className="row display-table-row">
-          <SideBar nav="caminhoes" />
+          <SideBar nav="caminhoes" query={isManaged ? 'organizado' : null} />
 
           <div className="col-md-10 col-sm-11 display-table-cell v-align">
             <Header />
@@ -82,6 +85,9 @@ const Caminhao = () => {
 
                       <div className="trucks">
                         <div className="truck">
+                          <div className='name'>
+                            <h3>Norte</h3>
+                          </div>
                           <div className="products">
                             {truck1.map(product => (
                               <p key={product.identificador}>{product.descricao}</p>
@@ -89,6 +95,9 @@ const Caminhao = () => {
                           </div>
                         </div>
                         <div className="truck">
+                          <div className='name'>
+                            <h3>Nordeste</h3>
+                          </div>
                           <div className="products">
                             {truck2.map(product => (
                               <p key={product.identificador}>{product.descricao}</p>
@@ -96,6 +105,9 @@ const Caminhao = () => {
                           </div>
                         </div>
                         <div className="truck">
+                          <div className='name'>
+                            <h3>Centro-oeste</h3>
+                          </div>
                           <div className="products">
                             {truck3.map(product => (
                               <p key={product.identificador}>{product.descricao}</p>
@@ -103,6 +115,9 @@ const Caminhao = () => {
                           </div>
                         </div>
                         <div className="truck">
+                          <div className='name'>
+                            <h3>Sudeste</h3>
+                          </div>
                           <div className="products">
                             {truck4.map(product => (
                               <p key={product.identificador}>{product.descricao}</p>
@@ -110,6 +125,9 @@ const Caminhao = () => {
                           </div>
                         </div>
                         <div className="truck">
+                          <div className='name'>
+                            <h3>Sul</h3>
+                          </div>
                           <div className="products">
                             {truck5.map(product => (
                               <p key={product.identificador}>{product.descricao}</p>

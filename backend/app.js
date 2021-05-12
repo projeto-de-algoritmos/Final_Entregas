@@ -113,11 +113,11 @@ const getRoutes = (request, response) => {
   const produtosSul = [...new Set(itemsOrdenados.filter(i => regiao.sul.includes(i.estado)).map(p => ufEstados[p.estado])), 'DF']
 
   const routes = {
-    0: buildRoute(produtosNordeste),
-    1: buildRoute(produtosSul),
-    3: buildRoute(produtosSudeste),
-    2: buildRoute(produtosCentroOeste),
-    4: buildRoute(produtosNorte),
+    1: buildRoute(produtosNorte),
+    2: buildRoute(produtosNordeste),
+    3: buildRoute(produtosCentroOeste),
+    4: buildRoute(produtosSudeste),
+    5: buildRoute(produtosSul),
   }
 
   return response.status(200).json(routes)

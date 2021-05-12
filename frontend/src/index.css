@@ -361,6 +361,16 @@ header {
   background-size: contain;
   float: left;
 }
+.truck .name {
+  position: absolute;
+  top: 150px;
+  width: 100%;
+  text-align: center;
+}
+.truck .name h3 {
+  font-weight: 600;
+  margin: 0;
+}
 .truck .products {
   position: absolute;
   width: 180px;

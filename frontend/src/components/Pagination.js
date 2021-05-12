@@ -13,7 +13,7 @@ const Pagination = (props) => {
     setPages([])
 
     for (let i = 0; i < maxPages; i++) {
-      setPages(prevPages => [...prevPages, i+1])
+      setPages(prevPages => [...prevPages, `${i+1}`])
     }
   }, [props.currentPage, props.maxPages, maxPages])
 

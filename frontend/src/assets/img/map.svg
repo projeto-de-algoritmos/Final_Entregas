@@ -2955,7 +2955,6 @@
 <line id="AM-RR" class="st1" x1="143.3" y1="161.3" x2="194" y2="77.5"/>
 <line id="AM-RO" class="st1" x1="171.3" y1="257.2" x2="143.3" y2="161.3"/>
 <line id="AM-PA" class="st1" x1="300.4" y1="167.2" x2="143.3" y2="161.3"/>
-<line id="PA-AP" class="st1" x1="300.4" y1="167.2" x2="314.4" y2="81.4"/>
 <line id="RR-PA" class="st1" x1="300.4" y1="167.2" x2="194" y2="77.5"/>
 <line id="PA-MT" class="st1" x1="268.4" y1="285.2" x2="300.4" y2="167.2"/>
 <line id="MT-RO" class="st1" x1="268.4" y1="285.2" x2="171.3" y2="257.2"/>
@@ -2986,6 +2985,7 @@
 <line id="SE-BA" class="st1" x1="437.7" y1="271.2" x2="508.5" y2="250.3"/>
 <path id="BA-AL" class="st1" d="M437.7,271.2c2.8-6,11.7-23.2,32-34.1c24.9-13.4,49-7.6,54.4-6.1"/>
 <path id="CE-PB" class="st1" d="M476.4,157.2c0.1,1.6,2.4,21.8,21,31.9c19.3,10.5,38.2,0.3,39.4-0.4"/>
+<path id="CE-PE" class="st1" d="M476.4,157.2c-0.7,3.4-4.7,23.3,7.8,40.5c12,16.6,34.4,24,56.3,18.3"/>
 <path id="BA-PE" class="st1" d="M437.7,271.2c-0.3-2.3-3.6-36.4,21.8-56.9c21.9-17.6,55.6-17.4,80.6,2.1"/>
 <line id="BA-MG" class="st1" x1="406.2" y1="363.2" x2="437.7" y2="271.2"/>
 <line id="MG-ES" class="st1" x1="459.5" y1="377.2" x2="406.2" y2="363.2"/>
@@ -3000,10 +3000,9 @@
 <line id="PR-SC" class="st1" x1="341.6" y1="483.9" x2="314" y2="444.2"/>
 <line id="SC-RS" class="st1" x1="298.5" y1="515.4" x2="341.6" y2="483.9"/>
 <circle id="AC" class="st2" cx="66.1" cy="227.6" r="8"/>
-<circle id="AM" class="st2" cx="194" cy="77.5" r="8"/>
-<circle id="RR" class="st2" cx="143.3" cy="161.3" r="8"/>
+<circle id="RR" class="st2" cx="194" cy="77.5" r="8"/>
+<circle id="AM" class="st2" cx="143.3" cy="161.3" r="8"/>
 <circle id="PA" class="st2" cx="300.4" cy="167.2" r="8"/>
-<circle id="AP" class="st2" cx="314.4" cy="81.4" r="8"/>
 <circle id="RO" class="st2" cx="171.3" cy="257.2" r="8"/>
 <circle id="MT" class="st2" cx="268.4" cy="284.7" r="8"/>
 <circle id="TO" class="st2" cx="355.6" cy="243.2" r="8"/>
@@ -3027,10 +3026,9 @@
 <circle id="ES" class="st2" cx="459.5" cy="377.2" r="8"/>
 <circle id="RJ" class="st2" cx="437.7" cy="416.8" r="8"/>
 <text id="AM_LABEL" transform="matrix(1 0 0 1 113.2351 149.865)" class="st3 st4 st5">AM</text>
-<text id="AP_LABEL" transform="matrix(1 0 0 1 173.5132 61.2925)" class="st3 st4 st5">AP</text>
 <text id="AC_LABEL" transform="matrix(1 0 0 1 30.9204 219.6366)" class="st3 st4 st5">AC</text>
 <text id="RO_LABEL" transform="matrix(1 0 0 1 138.1636 251.2366)" class="st3 st4 st5">RO</text>
-<text id="RR_LABEL" transform="matrix(1 0 0 1 304.1131 63.8866)" class="st3 st4 st5">RR</text>
+<text id="RR_LABEL" transform="matrix(1 0 0 1 172.5502 62.8499)" class="st3 st4 st5">RR</text>
 <text id="PA_LABEL" transform="matrix(1 0 0 1 316.7631 153.3366)" class="st3 st4 st5">PA</text>
 <text id="PI_LABEL" transform="matrix(1 0 0 1 398.6631 213.6367)" class="st3 st4 st5">PI</text>
 <text id="TO_LABEL" transform="matrix(1 0 0 1 360.5633 266.8199)" class="st3 st4 st5">TO</text>

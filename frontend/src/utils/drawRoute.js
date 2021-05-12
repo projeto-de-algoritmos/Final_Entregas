@@ -2,7 +2,7 @@ import $ from 'jquery'
 
 export const drawRoute = (rota) => {
   rota.estados.forEach((estado, index) => {
-    if (index === 0) {
+    if (index === 0 || index === rota.estados.length-1) {
       $(`circle#${estado}`).css({'fill': '#ff4242', 'display': 'block'})
     } else {
       $(`circle#${estado}`).css({'fill': '#002bde', 'display': 'block'})
